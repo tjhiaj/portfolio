@@ -88,7 +88,7 @@ nav ul li a:hover::after{
 }
 
 .about-col-1{
-    flex-basis: 35%;
+    flex-basis: 40%;
 }
 
 .about-col-1 img{
@@ -97,7 +97,7 @@ nav ul li a:hover::after{
 }
 
 .about-col-2{
-    flex-basis: 60%; /* 60+35=95 so 5% gap between cols*/
+    flex-basis: 55%; /* 60+35=95 so 5% gap between cols*/
 }
 
 .sub-title{
@@ -136,4 +136,23 @@ nav ul li a:hover::after{
 
 .tab-links.active-link::after{
     width: 50%;
+}
+
+.tab-contents ul li{
+    list-style: none;
+    margin: 10px 0; /* top-bottom, left-right*/
+    line-height: 1.7;
+}
+
+.tab-contents ul li span{
+    color: #C77DFF;
+    font-size: 14px;
+}
+
+.tab-contents{
+    display: none; /* hide all tab contents*/
+}
+
+.tab-contents.active-tab{
+    display: block; /*make skills visible*/
 }
