@@ -219,9 +219,10 @@ nav ul li a:hover::after{
 }
 
 .work{
-    border-radius: 10 px;
+    border-radius: 10px;
     position: relative;
     overflow: hidden;
+    z-index:1;
 }
 
 .work img{
@@ -279,4 +280,22 @@ nav ul li a:hover::after{
 
 .work:hover .layer{
     height: 100%;
+}
+
+.btn{
+    display: block;
+    /* top/bottom left/right (auto means centred) */
+    margin: 50px auto;
+    width: fit-content;
+    border: 1px solid #7B2CBF;
+    /* space inside button */
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.5s;
+}
+
+.btn:hover{
+    background: #7B2CBF;
 }
