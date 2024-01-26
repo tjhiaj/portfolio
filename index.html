@@ -152,7 +152,7 @@
                 <a href="images/Josephine Tjhia, j.tjhia@gmail, 2026, Resume.pdf" download class="btn btn2">Download CV</a>
             </div>
             <div class="contact-right">
-                <form>
+                <form name="submit-to-google-sheet">
                     <input type="text" name="Name" placeholder="Your Name" required>
                     <input type="text" name="Email" placeholder="Your Email" required>
                     <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
@@ -195,6 +195,18 @@ function closemenu(){
 }
 
 </script>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxqCRkRupekFHdT1_yi5DQRFl3rQYnmgzOrPjYRal_aPU_vkeQlAj11ZCiWol3aaQa7/exec'
+    const form = document.forms['submit-to-google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
 
 </body>
 </html>
