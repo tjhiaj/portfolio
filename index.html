@@ -244,7 +244,6 @@ function closemenu(){
 <script>
     const coords = {x: 0, y: 0};
     const circles = document.querySelectorAll(".circle");
-    // const colors = ["#1f005c", "#48005f", "#680060", "#830060", "#9c155f", "#b22c5e", "#c5415d", "#d5585c", "#e36e5c", "#ef865e", "#f89d63", "#ffb56b"];
     const colors = ["#c77dff", "#b771ed", "#a764db", "#9758c9", "#884cb7", "#7941a6", "#6a3595", "#5b2a85", "#4d1f74", "#3f1464", "#310855", "#240046"];
 
     circles.forEach(function(circle, index){
@@ -257,7 +256,7 @@ function closemenu(){
     window.addEventListener("mousemove", function(e){
         coords.x = e.clientX;
         coords.y = e.clientY;
-        });
+    });
 
     function animateCircles(){
         let x = coords.x;
@@ -282,7 +281,8 @@ function closemenu(){
 
         requestAnimationFrame(animateCircles);
     }
-    // tell browser to call function before next repaint
+
+    // tell browser to call function before next repaint, collect circles at edges
     animateCircles();
 </script>
 
