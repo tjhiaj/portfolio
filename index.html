@@ -165,6 +165,20 @@
     <div class="copyright">
         <p>Copyright © Josephine Tjhia</p>
     </div>
+
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+
 </div>
 
 <script>
@@ -214,7 +228,7 @@ function closemenu(){
         })
         .catch(error => console.error('Error!', error.message))
     })
-  </script>
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js" integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -225,6 +239,51 @@ function closemenu(){
         BackSpeed: 60,
         loop:true
     })
+</script>
+
+<script>
+    const coords = {x: 0, y: 0};
+    const circles = document.querySelectorAll(".circle");
+    // const colors = ["#1f005c", "#48005f", "#680060", "#830060", "#9c155f", "#b22c5e", "#c5415d", "#d5585c", "#e36e5c", "#ef865e", "#f89d63", "#ffb56b"];
+    const colors = ["#c77dff", "#b771ed", "#a764db", "#9758c9", "#884cb7", "#7941a6", "#6a3595", "#5b2a85", "#4d1f74", "#3f1464", "#310855", "#240046"];
+
+    circles.forEach(function(circle, index){
+        circle.x = 0;
+        circle.y = 0;
+        circle.style.backgroundColor = colors[index % colors.length]
+    });
+
+    // track cursor's position
+    window.addEventListener("mousemove", function(e){
+        coords.x = e.clientX;
+        coords.y = e.clientY;
+        });
+
+    function animateCircles(){
+        let x = coords.x;
+        let y = coords.y;
+
+        circles.forEach(function(circle, index){
+            // centre
+            circle.style.left = x - 12 + "px";
+            circle.style.top = y - 12 + "px";
+
+            // smaller circles for trail effect
+            circle.style.scale = (circles.length - index) / circles.length
+
+            circle.x = x;
+            circle.y = y;
+
+            // offset
+            const nextCircle = circles[index + 1] || circles[0];
+            x += (nextCircle.x - x) * 0.3;
+            y += (nextCircle.y - y) * 0.3;
+        });
+
+        requestAnimationFrame(animateCircles);
+    }
+    // tell browser to call function before next repaint
+    animateCircles();
 </script>
 
 </body>

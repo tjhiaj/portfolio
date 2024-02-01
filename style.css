@@ -14,6 +14,10 @@ html{
 body{
     background: #10002b;
     color: #fff;
+    box-sizing: border-box;
+    padding: 0;
+    margin:0;
+    height: 100vh;
 }
 #header{
     width: 100%;
@@ -612,7 +616,27 @@ nav .fa-solid{
 }
 
 #msg{
-    color:;
+    color: #fff;
     margin-top: -10px;
     display: block;
 }
+
+.circle{
+    height: 24px;
+    width: 24px;
+    border-radius: 20px;
+    background-color: #10002B;
+    position: absolute;
+    display: block;
+}
+
+.cursor {
+    pointer-events: none;
+    position: fixed;
+    display: block;
+    border-radius: 0;
+    mix-blend-mode: difference;
+    top: 0;
+    left: 0;
+    z-index: 9999999999999999;  
+  }
