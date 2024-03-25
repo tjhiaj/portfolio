@@ -242,6 +242,9 @@ function closemenu(){
 </script>
 
 <script>
+    // control  state of cursor animation
+    let animationEnabled = true;
+
     const coords = {x: 0, y: 0};
     const circles = document.querySelectorAll(".circle");
     const colors = ["#c77dff", "#b771ed", "#a764db", "#9758c9", "#884cb7", "#7941a6", "#6a3595", "#5b2a85", "#4d1f74", "#3f1464", "#310855", "#240046"];
@@ -259,27 +262,33 @@ function closemenu(){
     });
 
     function animateCircles(){
-        let x = coords.x;
-        let y = coords.y;
+        if (animationEnabled){
+            let x = coords.x;
+            let y = coords.y;
 
-        circles.forEach(function(circle, index){
-            // centre
-            circle.style.left = x - 12 + "px";
-            circle.style.top = y - 12 + "px";
+            circles.forEach(function(circle, index){
+                // centre
+                circle.style.left = x - 12 + "px";
+                circle.style.top = y - 12 + "px";
 
-            // smaller circles for trail effect
-            circle.style.scale = (circles.length - index) / circles.length
+                // smaller circles for trail effect
+                circle.style.scale = (circles.length - index) / circles.length
 
-            circle.x = x;
-            circle.y = y;
+                circle.x = x;
+                circle.y = y;
 
-            // offset
-            const nextCircle = circles[index + 1] || circles[0];
-            x += (nextCircle.x - x) * 0.3;
-            y += (nextCircle.y - y) * 0.3;
-        });
+                // offset
+                const nextCircle = circles[index + 1] || circles[0];
+                x += (nextCircle.x - x) * 0.3;
+                y += (nextCircle.y - y) * 0.3;
+            });
+        }
 
         requestAnimationFrame(animateCircles);
+    }
+
+    if (window.innerWidth <= 1024) {
+        animationEnabled = false;
     }
 
     // tell browser to call function before next repaint, collect circles at edges
